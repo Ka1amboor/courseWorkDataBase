@@ -1,0 +1,18 @@
+version: "3.9"
+
+services:
+  flower_shop_db:
+    image: postgres
+    restart: always
+    environment:
+      - POSTGRES_DB=flower_db
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=12345
+    volumes:
+      - db:/var/lib/postgresql/data postgres
+      - ./backups:/backups
+    ports:
+      - "5438:5432"
+
+volumes:
+  db:
